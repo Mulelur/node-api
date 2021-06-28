@@ -8,19 +8,29 @@ const app = express();
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
-// 3) ROUTES
-app.get('/sim-cards', (req, res) => {
-  let sql = 'SELECT * FROM simcards';
-  let query = db.query(sql, (err, results) => {
-    if (err) throw err;
+// 2) ROUTES
+
+app.post('/createdb', (req, res) => {
+  db.query('CREATE DATABASE simcarddb', (err, results) => {
+    if (err) {
+      throw err;
+    }
     res.status(200).json({
-      sucsess: 'true',
-      data: results,
+      sucsess: true,
+      massege: 'database created...',
     });
   });
 });
 
+app.post('/connect', (req, res) => {
+  db.connect();
+  res.status(200).json({
+    sucsess: true,
+    massege: 'database connected...',
+  });
+});
 // Createing DataBase Tables
+//////
 // Creating SimCard Table
 app.post('/createdbtable', (req, res) => {
   let createTableSql =
@@ -67,14 +77,13 @@ app.post('/createcustomerdbtable', (req, res) => {
   });
 });
 
-app.post('/deleteorderTable', (req, res) => {
-  db.query('DROP TABLE orders', (err, result) => {
-    if (err) {
-      throw err;
-    }
+app.get('/sim-cards', (req, res) => {
+  let sql = 'SELECT * FROM simcards';
+  let query = db.query(sql, (err, results) => {
+    if (err) throw err;
     res.status(200).json({
       sucsess: 'true',
-      massege: 'order db table was deleted',
+      data: results,
     });
   });
 });
@@ -83,7 +92,6 @@ app.post('/deleteorderTable', (req, res) => {
 
 app.post('/createsimcard', (req, res) => {
   const name = req.body.name;
-  console.log(name);
   let simCard = { name };
   let sql = 'INSERT INTO simcards SET ?';
   let query = db.query(sql, simCard, (err, result) => {
@@ -140,6 +148,8 @@ app.post('/order/:simID/:customerID', (req, res) => {
   });
 });
 
+// Create New Customer
+
 app.post('/createCustomer', (req, res) => {
   fetch('http://ip-api.com/json/24.48.0.1')
     .then((res) => res.json())
@@ -162,8 +172,9 @@ app.post('/createCustomer', (req, res) => {
       });
     });
 });
-// app.post
-// `SELECT * FROM customer WHERE id = ${req.params.customerID}`;
+
+// UpDate Order
+
 app.patch('/orders/:id', (req, res) => {
   let orderSql = `SELECT * FROM orders WHERE id = ${req.params.id}`;
   let orderQuery = db.query(orderSql, (err, resultA) => {
@@ -190,12 +201,6 @@ function getOrders(req, res, next) {
   const prodsQuery =
     'SELECT * FROM orders limit ' + limit + ' OFFSET ' + offset;
   let query = db.query(prodsQuery, (err, results) => {
-    // jResult = {
-    //   products_page_count: results.length,
-    //   page_number: page,
-    //   products: results,
-    // };
-
     if (err) {
       return res.status(500).json({
         sucsess: false,

@@ -37,7 +37,7 @@ describe('POST /sim-card', () => {
   });
   describe('Given a exicting name', () => {
     it('should return a erorr', async () => {
-      await request(app).post('/createsimcard').expect(200);
+      await request(app).post('/createsimcard').expect(500);
     });
   });
 });
@@ -66,11 +66,11 @@ describe('GET /order', () => {
 
 describe('PATCH /order', () => {
   describe('When there are concurrent requests to take a same order', () => {
-    // it('should one can take the order while the other will fail',async () => {
-    //     await request(app).patch('/orders/:id').
-    // })
+    it('should one can take the order while the other will fail', async () => {
+      await request(app).patch('/orders/:id').expect(200);
+    });
   });
-  describe('whe requesrs passes', () => {
+  describe('whe requesrs is sucsesful', () => {
     it('hould be able to change the status of an order to Complete', async () => {
       await request(app).patch('/orders/3').expect(200);
     });

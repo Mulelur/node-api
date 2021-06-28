@@ -4,7 +4,7 @@ A REST API built with Node.js
 
 ### About
 
-Your task is to implement endpoints to a get list of available sim cards, list sim card orders,
+Node js with endpoints that get's a list of available sim cards, list sim card orders,
 place an order, and to take an order.
 
 ### posts
@@ -38,8 +38,13 @@ npm start:dev
 mpm start:prod
 ```
 
-4. ## Create DataABase TABLE
+The API runs on port `3200` by default.
 
+4. ## Set Up The data base
+
+`http://127.0.0.1:3200/createdb`
+`http://127.0.0.1:3200/createordersdbtable`
+`http://127.0.0.1:3200/createcustomerdbtable`
 `http://127.0.0.1:3200/createdbtable`
 
 5. ## Testing
@@ -68,10 +73,12 @@ npm test
 
 7. ## Creating a Sim Card
 
-to create a new sim card send a `post` request to `http://127.0.0.1:3200/createsimcard`.
+to create a new sim card send a `POST` request to `http://127.0.0.1:3200/createsimcard`.
 In the request body you need to provide a uniqe name of th e sim card.
 
 this will return a json objects with a created sim card object
+
+Response:
 
 ```json
 {
@@ -178,7 +185,7 @@ Response:
       "simId": 1,
       "customerId": 4,
       "createdAt": "2021-06-28T06:10:13.000Z",
-      "status": "Pending"
+      "status": "Completed"
     }
   ]
 }
