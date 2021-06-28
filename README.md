@@ -42,10 +42,12 @@ The API runs on port `3200` by default.
 
 4. ## Set Up The data base
 
-`http://127.0.0.1:3200/createdb`
-`http://127.0.0.1:3200/createordersdbtable`
-`http://127.0.0.1:3200/createcustomerdbtable`
-`http://127.0.0.1:3200/createdbtable`
+send a post request to this endpoint to setUp the databse
+
+- `http://127.0.0.1:3200/createdb`
+- `http://127.0.0.1:3200/createordersdbtable`
+- `http://127.0.0.1:3200/createcustomerdbtable`
+- `http://127.0.0.1:3200/createdbtable`
 
 5. ## Testing
 

@@ -7,8 +7,6 @@ const db = mysql.createConnection({
   database: 'simcarddb',
 });
 
-// db.connect();
-
 // create db
 
 // create table
