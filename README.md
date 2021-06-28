@@ -42,7 +42,7 @@ The API runs on port `3200` by default.
 
 4. ## Set Up The data base
 
-send a post request to this endpoint to setUp the databse
+send a `POST` request to **all** this endpoint to setUp the databse
 
 - `http://127.0.0.1:3200/createdb`
 - `http://127.0.0.1:3200/createordersdbtable`
@@ -75,10 +75,8 @@ npm test
 
 7. ## Creating a Sim Card
 
-to create a new sim card send a `POST` request to `http://127.0.0.1:3200/createsimcard`.
-In the request body you need to provide a uniqe name of th e sim card.
-
-this will return a json objects with a created sim card object
+To create a new sim card send a `POST` request to `http://127.0.0.1:3200/createsimcard`.
+In the request body you need to provide a unique name of th e sim card.
 
 Response:
 
@@ -89,9 +87,9 @@ Response:
 }
 ```
 
-8. Getting All Avaliable Sim Cards
+8. Getting All Available Sim Cards
 
-To get all avaliabe sim card send a `GET` request to `http://127.0.0.1:3200/sim-cards`.
+To get all availabe sim card send a `GET` request to `http://127.0.0.1:3200/sim-cards`.
 
 Resonpse:
 
@@ -117,13 +115,15 @@ Resonpse:
             "id": 2,
             "name": "vodacomsim"
         }
-    ]
+    ]...
 ```
 
 9. ## Creatting a customer
 
-to create a customer `POST` request to `http://127.0.0.1:3200/createCustomer`.
+To create a customer send a `POST` request to `http://127.0.0.1:3200/createCustomer`.
 Provide a name in the Request Body
+
+Request:
 
 ```json
 {
@@ -148,7 +148,7 @@ Response:
 
 10. ## Creating a Order
 
-to create a order `POST` request to `http://127.0.0.1:3200/order/:simID/:customerID` with the sim id and customer id in the uri
+To create a order send `POST` request to `http://127.0.0.1:3200/order/:simID/:customerID` with the sim id and customer id in the uri.
 
 Respone:
 
@@ -170,11 +170,11 @@ Respone:
 
 11. ## Getting Ordes
 
-to get all the orders send a `GET` request to `http://127.0.0.1:3200/orders`.
+To get all the orders send a `GET` request to `http://127.0.0.1:3200/orders`.
 
 12. ## Take Order
 
-to take a order send a `PUT` request to `http://127.0.0.1:3200/orders/:id`. Theis will return a order object with a status **Complete**.
+To take a order send a `PUT` request to `http://127.0.0.1:3200/orders/:id`. Theis will return a order object with a status **Complete**.
 
 Response:
 
