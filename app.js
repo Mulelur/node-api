@@ -22,13 +22,6 @@ app.post('/createdb', (req, res) => {
   });
 });
 
-app.post('/connect', (req, res) => {
-  db.connect();
-  res.status(200).json({
-    sucsess: true,
-    massege: 'database connected...',
-  });
-});
 // Createing DataBase Tables
 //////
 // Creating SimCard Table

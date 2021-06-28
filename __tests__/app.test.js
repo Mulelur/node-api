@@ -35,7 +35,7 @@ describe('POST /sim-card', () => {
       await request(app).post('/createsimcard').expect('Content-Type', /json/);
     });
   });
-  describe('Given a exicting name', () => {
+  describe('if Given a exicting name', () => {
     it('should return a erorr', async () => {
       await request(app).post('/createsimcard').expect(500);
     });
@@ -51,7 +51,7 @@ describe('POST /order', () => {
 });
 
 describe('GET /order', () => {
-  describe('Given all ', () => {
+  describe('when given page numder, limit', () => {
     it('should start on page number 1', async () => {
       await request(app).get('/orders').query({ page: 1 });
     });
