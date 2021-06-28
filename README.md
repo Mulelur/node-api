@@ -174,7 +174,7 @@ To get all the orders send a `GET` request to `http://127.0.0.1:3200/orders`.
 
 12. ## Take Order
 
-To take a order send a `PUT` request to `http://127.0.0.1:3200/orders/:id`. Theis will return a order object with a status **Complete**.
+To take a order send a `PATCH` request to `http://127.0.0.1:3200/orders/:id`. Theis will return a order object with a status **Complete**.
 
 Response:
 
