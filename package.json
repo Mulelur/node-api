@@ -1,0 +1,23 @@
+{
+  "name": "simCard-Rest-Api",
+  "version": "1.0.0",
+  "description": "implemeting a endpoint that get's a list of available si cards, list sim card orders, place an order, and take an order",
+  "main": "app.js",
+  "author": "rotonda",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "test": "jest"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "supertest": "^6.1.3"
+  }
+}
